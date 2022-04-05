@@ -13,7 +13,7 @@ def read_config():
 def conn_config():
     read_config()
     return {
-            "path": "xxxx"
+            "path": "test.txt"
             }
 
 
@@ -23,7 +23,4 @@ def slack_config():
             "debug": CONFIG.get("slack", "debug", fallback=True),
             "slack_token": CONFIG.get("slack", "token", fallback=""),
             "channel_id": CONFIG.get("slack", "channel_id", fallback=""),
-            "channels": {
-                    "test": "xxxx"
-                }
     }
