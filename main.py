@@ -12,7 +12,7 @@ def get_keycode(today):
     with open(PATH) as keyfile:
         for key in keyfile:
             date, recipient, sender, subject, code = key.split('|')
-            if date == str(today):
+            if date.strip() == str(today):
                 code = code.split(';')
                 new_code = ''.join(filter(str.isdigit, code[0]))
                 old_code = ''.join(filter(str.isdigit, code[1]))
