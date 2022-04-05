@@ -10,17 +10,17 @@ def read_config():
         CONFIG.read("config.ini")
 
 
-def conn_config():
+def filepath_config():
     read_config()
     return {
-            "path": "test.txt"
+            "filepath": CONFIG.get("default", "key_filepath", fallback=""),
             }
 
 
 def slack_config():
     read_config()
     return {
-            "debug": CONFIG.get("slack", "debug", fallback=True),
-            "slack_token": CONFIG.get("slack", "token", fallback=""),
-            "channel_id": CONFIG.get("slack", "channel_id", fallback=""),
+            "debug": CONFIG.get("default", "debug", fallback=True),
+            "slack_token": CONFIG.get("default", "token", fallback=""),
+            "channel_id": CONFIG.get("default", "channel_id", fallback=""),
     }

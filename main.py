@@ -1,10 +1,10 @@
 import slack
-from config import conn_config
+from config import filepath_config
 from datetime import date, timedelta
 
 
-SETTINGS = conn_config()
-PATH = SETTINGS['path']
+SETTINGS = filepath_config()
+PATH = SETTINGS['filepath']
 
 
 def get_keycode(today):
@@ -27,8 +27,9 @@ if next_post != today:
 
 new_code, old_code = get_keycode(today)
 if new_code is None or old_code is None:
+    new_code, old_code = get_keycode(today-timedelta(today.isoweekday()))
     slack.post_message(
-            "#test", "Did not find any keys for today, help me find them!")
+            "#test", f"No keys for today the old code is: {old_code}")
     exit()
 
 slack.post_message(
