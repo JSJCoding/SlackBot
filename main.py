@@ -3,12 +3,16 @@
 # https://api.slack.com/apps/A03914BTBUG/oauth?success=1
 
 import slack
+from config import conn_config
 from datetime import date, timedelta
+
+SETTINGS = conn_config()
+PATH = SETTINGS['path']
 
 
 def get_keycode(today):
     new_code = old_code = None
-    with open("test.txt") as keyfile:
+    with open(PATH) as keyfile:
         for key in keyfile:
             date, recipient, sender, subject, code = key.split('|')
             if date == str(today):

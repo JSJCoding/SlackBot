@@ -10,6 +10,13 @@ def read_config():
         CONFIG.read("config.ini")
 
 
+def conn_config():
+    read_config()
+    return {
+            "path": CONFIG.get("conn", "path", fallback=""),
+            }
+
+
 def slack_config():
     read_config()
     return {
