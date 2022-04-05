@@ -4,13 +4,12 @@ from slack_sdk.errors import SlackApiError
 
 SETTINGS = slack_config()
 CLIENT = WebClient(token=SETTINGS["slack_token"])
-CHANNELS = SETTINGS["channels"]
 
 
 def post_message(channel, message):
     try:
         response = CLIENT.chat_postMessage(
-            channel=CHANNELS[f"{channel}"],
+            channel=channel,
             text=f"{message}"
         )
     except SlackApiError as e:
@@ -22,7 +21,7 @@ def post_message(channel, message):
 def post_thread(channel, timestamp, message):
     try:
         response = CLIENT.chat_postMessage(
-            channel=CHANNELS[f"{channel}"],
+            channel=channel,
             thread_ts=f"{timestamp}",
             text=f"{message}"
         )
@@ -35,7 +34,7 @@ def post_thread(channel, timestamp, message):
 def post_update(channel, timestamp, message):
     try:
         response = CLIENT.chat_update(
-            channel=CHANNELS[f"{channel}"],
+            channel=channel,
             ts=f"{timestamp}",
             text=f"{message}"
         )
