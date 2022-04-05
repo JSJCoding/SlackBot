@@ -29,7 +29,7 @@ new_code, old_code = get_keycode(today)
 if new_code is None or old_code is None:
     new_code, old_code = get_keycode(today-timedelta(today.isoweekday()))
     slack.post_message(
-            "#test", f"No keys for today the old code is: {old_code}")
+            "#test", f"No keys for today the new code is: {new_code}")
     exit()
 
 slack.post_message(
