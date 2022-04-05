@@ -13,7 +13,7 @@ def read_config():
 def conn_config():
     read_config()
     return {
-            "path": CONFIG.get("conn", "path", fallback=""),
+            "path": "xxxx" ,
             }
 
 
