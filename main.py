@@ -22,17 +22,17 @@ def get_keycode(today):
 
 next_post = today = date.today()
 if next_post != today:
-    slack.post_message("#test", "There shall be no post today!")
+    slack.post_message("#keys", "There shall be no post today!")
     exit()
 
 new_code, old_code = get_keycode(today)
 if new_code is None or old_code is None:
     new_code, old_code = get_keycode(today-timedelta(today.isoweekday()))
     slack.post_message(
-            "#test", f"No keys for today the new code is: {new_code}")
+            "#keys", f"No keys for today the new code is: {new_code}")
     exit()
 
 slack.post_message(
-        "#test", f"Havne keys has been updated: \n {old_code} -> {new_code}")
+        "#keys", f"Havne keys has been updated: \n {old_code} -> {new_code}")
 
 next_post += timedelta(days=7)
